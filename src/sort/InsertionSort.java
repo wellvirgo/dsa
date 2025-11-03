@@ -1,15 +1,11 @@
 package sort;
 
-import common.SwapArray;
-
 import java.util.Arrays;
 
-public class BubbleSort {
+public class InsertionSort {
   public static void main(String[] args) {
     int[] a = {2, 1, -2, 3, 0, 9, -1, -5, 100, 102, -1};
-
     sort(a);
-
     System.out.println(Arrays.toString(a));
   }
 
@@ -19,17 +15,17 @@ public class BubbleSort {
    * */
   static void sort(int[] a) {
     int n = a.length;
-    boolean swapped;
 
-    for (int i = 0; i < n - 1; i++) {
-      swapped = false;
-      for (int j = 0; j < n - i - 1; j++) {
-        if (a[j] > a[j + 1]) {
-          SwapArray.swap(a, j, j + 1);
-          swapped = true;
-        }
+    for (int i = 1; i < n; i++) {
+      int k = a[i];
+      int j = i - 1;
+
+      while (j >= 0 && a[j] > k) {
+        a[j + 1] = a[j];
+        j--;
       }
-      if (!swapped) break;
+
+      a[j + 1] = k;
     }
   }
 }

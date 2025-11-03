@@ -4,7 +4,7 @@ import common.SwapArray;
 
 import java.util.Arrays;
 
-public class BubbleSort {
+public class SelectionSort {
   public static void main(String[] args) {
     int[] a = {2, 1, -2, 3, 0, 9, -1, -5, 100, 102, -1};
 
@@ -17,19 +17,20 @@ public class BubbleSort {
    * Time complexity: O(n^2)
    * Space complexity: O(1)
    * */
-  static void sort(int[] a) {
-    int n = a.length;
-    boolean swapped;
+  static void sort(int[] arr) {
+    int n = arr.length;
 
     for (int i = 0; i < n - 1; i++) {
-      swapped = false;
-      for (int j = 0; j < n - i - 1; j++) {
-        if (a[j] > a[j + 1]) {
-          SwapArray.swap(a, j, j + 1);
-          swapped = true;
+      int minIdx = i;
+      for (int j = i + 1; j < n; j++) {
+        if (arr[j] < arr[minIdx]) {
+          minIdx = j;
         }
       }
-      if (!swapped) break;
+
+      if (minIdx != i) {
+        SwapArray.swap(arr, i, minIdx);
+      }
     }
   }
 }
